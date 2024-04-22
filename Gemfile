@@ -68,6 +68,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "devise"
 
 # gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 
@@ -77,5 +78,4 @@ end
 # gem "autoprefixer-rails"
 # gem "font-awesome-sass", "~> 6.1"
 # gem "simple_form", github: "heartcombo/simple_form"
-# gem "sassc-rails"
-# gem "devise"
+# gem 'sassc-rails'

@@ -1,14 +1,11 @@
-<p style="color: green"><%= notice %></p>
 
 <h1>Experiences</h1>
 
-<div id="experiences">
-  <% @experiences.each do |experience| %>
-    <%= render experience %>
-    <p>
-      <%= link_to "Show this experience", experience %>
-    </p>
-  <% end %>
-</div>
+<% @experiences.each do |experience| %>
+  <div>
+    <h2><%= experience.title %></h2>
+    <p><%= experience.description %></p>
+    <p><%= link_to "Edit", edit_experience_path(experience) %></p>
+  </div>
 
-<%= link_to "New experience", new_experience_path %>
+<% end %>

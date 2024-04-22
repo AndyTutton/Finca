@@ -10,15 +10,6 @@
     </div>
   </div>
 
-<% @experiences.each do |experience| %>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"><%= experience.title %></h5>
-      <p class="card-text"><%= experience.description %></p>
-      <!-- Link to the show page for this experience -->
-      <%= link_to "See details", experience_path(experience), class: "btn btn-primary" %>
-    </div>
-  </div>
-<% end %>
 
+  <%= link_to "Show all experiences", experiences_path %>
 </div>

@@ -4,6 +4,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences or /experiences.json
   def index
     @experiences = Experience.all
+
   end
 
   # GET /experiences/1 or /experiences/1.json
@@ -19,20 +20,26 @@ class ExperiencesController < ApplicationController
   def edit
   end
 
-  # POST /experiences or /experiences.json
-  def create
-    @experience = Experience.new(experience_params)
 
-    respond_to do |format|
+  class ExperiencesController < ApplicationController
+    def create
+      @experience = current_user.experiences.new(experience_params)
+
       if @experience.save
-        format.html { redirect_to experience_url(@experience), notice: "Experience was successfully created." }
-        format.json { render :show, status: :created, location: @experience }
+        redirect_to experiences_path, notice: 'Experience was successfully created.'
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @experience.errors, status: :unprocessable_entity }
+        render :new
       end
     end
+
+    private
+
+    def experience_params
+      params.require(:experience).permit(:title, :description, :travel_experience, :education)
+    end
   end
+
+
 
   # PATCH/PUT /experiences/1 or /experiences/1.json
   def update
@@ -47,10 +54,8 @@ class ExperiencesController < ApplicationController
     end
   end
 
-  # DELETE /experiences/1 or /experiences/1.json
   def destroy
-    @experience.destroy!
-
+    @experience.destroy
     respond_to do |format|
       format.html { redirect_to experiences_url, notice: "Experience was successfully destroyed." }
       format.json { head :no_content }
